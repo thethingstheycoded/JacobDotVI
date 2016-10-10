@@ -73,6 +73,7 @@ def import_images(image_dir, num_images):
 if __name__ == "__main__":
 
   # Import the data into numpy vectors
+  # Images from http://peipa.essex.ac.uk/info/mias.html
   images_train, labels_train = import_images("images/", 322)
 
   # Adapted from https://www.tensorflow.org/versions/r0.11/tutorials/mnist/beginners/index.html
