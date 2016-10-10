@@ -74,7 +74,7 @@ if __name__ == "__main__":
 
   # Import the data into numpy vectors
   # Images from http://peipa.essex.ac.uk/info/mias.html
-  images_train, labels_train = import_images("images/", 322)
+  images, labels = import_images("images/", 322)
 
   # Adapted from https://www.tensorflow.org/versions/r0.11/tutorials/mnist/beginners/index.html
   x = tf.placeholder(tf.float32, [None, 1024*1024])
@@ -99,9 +99,9 @@ if __name__ == "__main__":
   for i in range(1000):
     #Create a batch of random images for training
     for i in range(100):
-      j = randint(0,321)
-      batch_xs[i] = images_train[j]
-      batch_ys[i] = labels_train[j]
+      j = randint(0,271)
+      batch_xs[i] = images[j]
+      batch_ys[i] = labels[j]
 
     sess.run(train_step, feed_dict={x: batch_xs, y_:batch_ys})
 
@@ -109,11 +109,10 @@ if __name__ == "__main__":
   correct_prediction = tf.equal(tf.argmax(y,1), tf.argmax(y_,1))
   accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32))
 
-  test_xs = numpy.zeros((20, 1024*1024))
-  test_ys = numpy.zeros((20,7))
-  for i in range(20):
-    j = randint(0,321)
-    test_xs[i] = images_train[j]
-    test_ys[i] = labels_train[j]
+  test_xs = numpy.zeros((50, 1024*1024))
+  test_ys = numpy.zeros((50,7))
+  for i in range(50):
+    test_xs[i] = images_train[272+i]
+    test_ys[i] = labels_train[272+i]
 
   print(sess.run(accuracy, feed_dict={x:test_xs, y_:test_ys}))
