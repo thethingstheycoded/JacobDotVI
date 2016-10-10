@@ -75,6 +75,7 @@ if __name__ == "__main__":
   # Import the data into numpy vectors
   images_train, labels_train = import_images("images/", 322)
 
+  # Adapted from https://www.tensorflow.org/versions/r0.11/tutorials/mnist/beginners/index.html
   x = tf.placeholder(tf.float32, [None, 1024*1024])
   W = tf.Variable(tf.zeros([1024*1024, 7]))
   b = tf.Variable(tf.zeros([7]))
